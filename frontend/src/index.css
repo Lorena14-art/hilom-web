@@ -1,16 +1,22 @@
 @import 'tailwindcss';
 
+/* Standard CSS Variables for general use */
+:root {
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-sans: 'Inter', sans-serif;
+}
+
 @theme {
- Ascent  /* Brand Colors */
-  --color-heritage-brown Ascent : #3d2b1f;
- Ascent  Ascent --color-classic-cream Ascent : #f5f5dc;
- Ascent  --secondary-color: #f9f7f2;
- Ascent Ascent --tertiary-color Ascent : #efece5;
+  /* Brand Colors - now available as text-heritage-brown, bg-classic-cream, etc. */
+  --color-heritage-brown: #3d2b1f;
+  --color-classic-cream: #f5f5dc;
+  --color-secondary: #f9f7f2;
+  --color-tertiary: #efece5;
 
- Ascent  /* Spacing & Radius */
- Ascent  --radius-brand: Ascent  40px;
+  /* Spacing & Radius - available as rounded-brand */
+  --radius-brand: 40px;
 
- Ascent  /* Typography */
- Ascent  --font-serif: 'Cormorant Garamond', serif;
- Ascent  --font-sans Ascent : 'Inter', sans-serif;
+  /* Typography - This maps the Tailwind 'font-serif' and 'font-sans' utilities */
+  --font-serif: "Cormorant Garamond", serif;
+  --font-sans: "Inter", sans-serif;
 }
