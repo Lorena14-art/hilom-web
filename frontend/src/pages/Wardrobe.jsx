@@ -30,10 +30,10 @@ const ProductCard = ({ images, title, price, category, fabric }) => {
         {hasMultipleImages && (
           <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
             <div
-              className={`w-1 h-1 rounded-full transition-colors ${!isHovered ? 'bg-heritage-brown' : 'bg-stone-300'}`}
+              className={`w-1.5 h-1.5 rounded-full transition-colors ${!isHovered ? 'bg-heritage-brown' : 'bg-stone-300'}`}
             />
             <div
-              className={`w-1 h-1 rounded-full transition-colors ${isHovered ? 'bg-heritage-brown' : 'bg-stone-300'}`}
+              className={`w-1.5 h-1.5 rounded-full transition-colors ${isHovered ? 'bg-heritage-brown' : 'bg-stone-300'}`}
             />
           </div>
         )}
@@ -322,11 +322,39 @@ export default function Wardrobe() {
 
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
-      <div className="pt-32 pb-24 px-6 max-w-7xl mx-auto">
+      {/* Lessened padding-top from pt-32 to pt-16 */}
+      <div className="pt-16 pb-24 px-6 max-w-7xl mx-auto">
+        {/* Navigation Section centered with flex justify-center */}
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-10 flex justify-center"
+        >
+          <Link to="/" className="group flex items-center gap-3 w-fit">
+            <div className="w-8 h-8 rounded-full border border-stone-100 flex items-center justify-center group-hover:bg-stone-900 group-hover:text-white transition-all duration-500">
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                className="group-hover:-translate-x-0.5 transition-transform"
+              >
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+              </svg>
+            </div>
+            <span className="text-[10px] uppercase tracking-[0.4em] text-stone-400 group-hover:text-stone-900 transition-colors font-bold">
+              Back to Home
+            </span>
+          </Link>
+        </motion.div>
+
         <div className="flex flex-col items-center mb-16 text-center">
           <h2 className="font-serif text-5xl md:text-7xl text-heritage-brown italic">
             Full Collection
           </h2>
+
           <div className="flex flex-wrap justify-center gap-6 md:gap-10 mt-12 border-b border-stone-100 pb-4 w-full max-w-3xl">
             {categories.map((cat) => (
               <button
@@ -350,6 +378,7 @@ export default function Wardrobe() {
           </div>
         </div>
 
+        {/* Product Grid */}
         <motion.div
           layout
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-16"
@@ -372,7 +401,6 @@ export default function Wardrobe() {
             >
               <div className="w-px h-16 bg-stone-100 mb-8" />
               <div className="flex gap-12 md:gap-24">
-                {/* See More Button */}
                 {visibleCount < filteredProducts.length && (
                   <button
                     onClick={handleSeeMore}
@@ -397,7 +425,6 @@ export default function Wardrobe() {
                   </button>
                 )}
 
-                {/* See Less Button */}
                 {visibleCount > ITEMS_PER_PAGE && (
                   <button
                     onClick={handleSeeLess}
